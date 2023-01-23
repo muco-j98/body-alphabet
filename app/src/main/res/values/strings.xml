@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Body Alphabet</string>
+    <string name="camera_rationale">Body Alphabet needs to access your camera</string>
 </resources>
