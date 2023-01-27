@@ -2,12 +2,13 @@ package com.muco.bodyalphabet
 
 import android.Manifest
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.muco.bodyalphabet.utils.Constants.RC_CAMERA
 import pub.devrel.easypermissions.AfterPermissionGranted
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
+import timber.log.Timber
+import timber.log.Timber.Forest.plant
 
 
 class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        plant(Timber.DebugTree())
         requestCameraPermission()
     }
 
@@ -28,7 +30,6 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
     }
 
     override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
-        Log.i("JHN", "onPermissionsGranted: ")
     }
 
     override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
         } else {
             // Do not have permissions, request them now
             EasyPermissions.requestPermissions(
-                this, getString(R.string.camera_rationale),
+                this, getString(R.string.AL_02),
                 RC_CAMERA, concat(*perms)
             )
         }
